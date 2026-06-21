@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ued体育 · 常看常新的赛事角落</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafb;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1.25rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: #eef2ff;
+            color: #4338ca;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            letter-spacing: 0.02em;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            color: #0f172a;
+        }
+
+        .card h2 span {
+            background: #eef2ff;
+            padding: 0.1rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #4338ca;
+            margin-left: 0.4rem;
+        }
+
+        .card p {
+            color: #334155;
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #f1f5f9;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            color: #475569;
+            margin-right: 0.3rem;
+            margin-top: 0.2rem;
+        }
+
+        .card-footer {
+            margin-top: 1rem;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .card-footer a {
+            color: #4338ca;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+        }
+
+        .card-footer a:hover {
+            border-bottom-color: #4338ca;
+        }
+
+        /* 自然链接句子 */
+        .link-sentence {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.02);
+            font-size: 1rem;
+        }
+
+        .link-sentence a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #bfdbfe;
+        }
+
+        .link-sentence a:hover {
+            color: #1e40af;
+            border-bottom-color: #2563eb;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.5rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-mini details {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid #f1f5f9;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #1e293b;
+            cursor: pointer;
+            padding: 0.3rem 0;
+        }
+
+        .faq-mini details p {
+            margin-top: 0.5rem;
+            font-size: 0.92rem;
+            color: #475569;
+            padding-left: 0.2rem;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .card, .link-sentence { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- hero -->
+        <div class="hero">
+            <h1>ued体育</h1>
+            <p>比分、赛程、战报 —— 常看常新的赛事角落，适合把浏览器标签留在这里。</p>
+            <div class="badge">再次访问 · 收藏 · 持续关注</div>
+        </div>
+
+        <!-- 信息卡片 -->
+        <div class="card-grid">
+
+            <div class="card">
+                <h2>主视觉 · 赛事速览 <span>今日</span></h2>
+                <p>首页直接呈现焦点场次、实时比分以及近期联赛走势。不用翻页，扫一眼就知道昨晚发生了什么、今晚又有什么值得熬夜。</p>
+                <p>从欧洲五大联赛到本土杯赛，信息密度适中，不堆砌，但该有的都有。</p>
+                <div>
+                    <span class="tag">实时比分</span>
+                    <span class="tag">赛程日历</span>
+                    <span class="tag">积分榜</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>用途 · 不止是数据</h2>
+                <p>除了基础的赛果查询，你也可以在这里找到赛后战术简析、关键事件复盘，以及球队近况的短评。适合赛前做功课、赛后找共鸣。</p>
+                <p>页面干净，没有多余的弹窗干扰，阅读体验比较松弛。</p>
+                <div class="card-footer">
+                    适合日常搭配咖啡、通勤、睡前快速浏览。
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>适合哪些人</h2>
+                <p>如果你习惯把某个体育站当作“默认首页”，或者每周至少回来两三回 —— 那么这里对胃口。<br>
+                不管是只看结果的佛系球迷，还是喜欢琢磨细节的深度爱好者，都能找到自己舒服的节奏。</p>
+                <p>没有浮夸的标题党，没有强行煽情的故事，只有比赛本身和围绕比赛的靠谱信息。</p>
+                <div class="card-footer">
+                    新球迷友好，老球迷也挑不出大毛病。
+                </div>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 -->
+        <div class="link-sentence">
+            <p>
+                很多人会把 <a href="https://main-uedsports.com">ued体育</a> 放在浏览器的书签栏里，或者直接设为新标签页。
+                原因很简单：打开就能看见当天的重要赛事，不用再绕路去别处搜赛程。久而久之，就成了习惯。
+            </p>
+            <p style="margin-top: 0.8rem;">
+                如果你是第一次听说，不妨试一次收藏 —— 下次想看比赛动态时，直接点开就好。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要（轻量） -->
+        <div class="faq-mini">
+            <h3>常见疑问 · 简短回答</h3>
+            <details>
+                <summary>页面会频繁更新吗？</summary>
+                <p>是的，赛程、比分和新闻基本跟随比赛节奏同步更新。重要场次结束后几分钟内就能看到关键信息。</p>
+            </details>
+            <details>
+                <summary>需要注册或登录才能看？</summary>
+                <p>不需要。大部分内容直接浏览，没有任何注册门槛。收藏即用。</p>
+            </details>
+            <details>
+                <summary>移动端体验如何？</summary>
+                <p>响应式设计，手机浏览器上排版同样清晰，横竖屏都适配。适合碎片时间快速查看。</p>
+            </details>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer-note">
+            ued体育 · 把关注的比赛留在手边
+        </div>
+
+    </div>
+</body>
+</html>
