@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 杂志专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f8fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1d2b34;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wrap {
+            max-width: 1120px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2.5rem 2.5rem 1.8rem 1.8rem;
+            box-shadow: 0 12px 28px rgba(0, 40, 60, 0.06), 0 4px 12px rgba(0, 30, 40, 0.04);
+            overflow: hidden;
+            padding: 2rem 1.8rem 3rem;
+        }
+
+        /* hero 横幅 */
+        .hero {
+            background: linear-gradient(135deg, #e0f0f5 0%, #c3dfe7 100%);
+            padding: 3rem 1.5rem;
+            border-radius: 2rem;
+            margin-bottom: 2.8rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -0.6rem;
+            left: 2rem;
+            right: 2rem;
+            height: 0.8rem;
+            background: #b3d4df;
+            border-radius: 0 0 1.2rem 1.2rem;
+            opacity: 0.2;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #10313c;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #1f4552;
+            max-width: 550px;
+            margin: 0 auto;
+            font-weight: 350;
+            line-height: 1.65;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: #1c6b7c;
+            color: #f0fafd;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            margin-top: 1rem;
+        }
+
+        /* 网格卡片区域 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+            margin: 2.4rem 0 2.8rem;
+        }
+
+        .card {
+            background: #f7fbfc;
+            border: 1px solid #ddecf2;
+            border-radius: 1.8rem;
+            padding: 1.6rem 1.4rem;
+            transition: box-shadow 0.2s, transform 0.15s;
+            box-shadow: 0 2px 6px rgba(0, 40, 50, 0.02);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(30, 90, 105, 0.07);
+            transform: translateY(-2px);
+            border-color: #b9d7e2;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0b3845;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3::before {
+            content: '▸';
+            color: #1f7f94;
+            font-weight: 300;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2b4a57;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .footnote {
+            font-size: 0.85rem;
+            color: #527682;
+            border-top: 1px dashed #cde1e8;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+        }
+
+        /* 三段自然介绍（杂志风格） */
+        .intro-block {
+            margin: 2rem 0 1.8rem;
+        }
+
+        .intro-block .segment {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #e1eef3;
+        }
+
+        .intro-block .segment:last-child {
+            border-bottom: none;
+        }
+
+        .segment h2 {
+            font-size: 1.3rem;
+            font-weight: 450;
+            color: #0b3845;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .segment p {
+            font-size: 1.02rem;
+            color: #1f3d49;
+            max-width: 720px;
+        }
+
+        .segment .meta-tag {
+            display: inline-block;
+            background: #d2e7ef;
+            color: #0a3846;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            margin-right: 0.5rem;
+            font-weight: 450;
+        }
+
+        /* 页尾访问提示 */
+        .footer-access {
+            margin-top: 3rem;
+            padding: 1.8rem 1.5rem;
+            background: #ecf4f8;
+            border-radius: 2rem;
+            text-align: center;
+            border: 1px solid #cbe0e9;
+        }
+
+        .footer-access p {
+            font-size: 1.05rem;
+            color: #173d4a;
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-access .link-sentence {
+            font-size: 1.1rem;
+            background: #ffffffd9;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            border: 1px solid #b3d0db;
+            margin-top: 0.6rem;
+        }
+
+        .link-sentence a {
+            color: #0d5d70;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #197a8f;
+            padding-bottom: 0.1rem;
+        }
+
+        .link-sentence a:hover {
+            background: #c6e1eb;
+            border-bottom-color: #0b4d5e;
+        }
+
+        /* FAQ 摘要（点缀感） */
+        .faq-mini {
+            margin-top: 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2rem;
+            padding: 1rem 0.5rem;
+            background: #f3f9fc;
+            border-radius: 1.6rem;
+            justify-content: center;
+        }
+
+        .faq-mini .item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            color: #1f4d5c;
+        }
+
+        .faq-mini .item strong {
+            font-weight: 500;
+            color: #0d4354;
+            background: #daeaf2;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+        }
+
+        .faq-mini .item span {
+            color: #2c5a69;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+            .wrap {
+                padding: 1.2rem 1rem 2rem;
+                border-radius: 1.6rem;
+            }
+            .hero {
+                padding: 2rem 0.8rem;
+                border-radius: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.2rem 1rem;
+            }
+            .segment h2 {
+                font-size: 1.15rem;
+            }
+            .footer-access {
+                padding: 1.2rem 1rem;
+            }
+            .faq-mini {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero p {
+                font-size: 1rem;
+            }
+            .link-sentence {
+                font-size: 0.95rem !important;
+                padding: 0.3rem 1rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- hero 横幅 -->
+        <div class="hero">
+            <h1>竞彩 · 从这里开始了解</h1>
+            <p>一本杂志式的索引页，帮你快速辨别网站用途，避免绕路。</p>
+            <div class="badge">专题· 识别篇</div>
+        </div>
+
+        <!-- 网格卡片：特点/场景 -->
+        <div class="grid-cards">
+            <div class="card">
+                <h3>信息聚焦</h3>
+                <p>围绕着竞彩相关的内容整合，页面结构清晰，不堆砌无关模块。适合想先看轮廓的用户。</p>
+                <div class="footnote">导航逻辑直接</div>
+            </div>
+            <div class="card">
+                <h3>移动适配</h3>
+                <p>无论手机还是桌面，卡片和字体都经过重新梳理。阅读节奏平缓，没有拥挤的跳转。</p>
+                <div class="footnote">响应式网格</div>
+            </div>
+            <div class="card">
+                <h3>克制叙述</h3>
+                <p>不渲染浮夸词汇，只说明网站性质和常见操作。你可以快速判断是否符合预期。</p>
+                <div class="footnote">真实基调</div>
+            </div>
+        </div>
+
+        <!-- 三段自然介绍 (背景说明 / 用途识别) -->
+        <div class="intro-block">
+            <div class="segment">
+                <h2><span class="meta-tag">背景</span> 一个专门聚合竞彩信息的站点</h2>
+                <p>很多人第一次打开链接时会犹豫：这是资讯站还是工具站？实际上，<a href="https://zhmobile-sporttery.com" style="color:#0d5d70; text-decoration: underline; text-underline-offset: 2px;">竞彩网</a>的定位偏向于提供赛事相关的数据与内容索引，页面以简洁为主，没有过度营销的弹窗。从首页结构就能看出，它更希望用户自行浏览感兴趣的部分。</p>
+            </div>
+            <div class="segment">
+                <h2><span class="meta-tag">用途</span> 快速识别：适合哪类用户？</h2>
+                <p>如果你习惯先了解某个竞彩平台的布局和功能分类，再决定是否深入，那么这个网站会让你比较直观地看到主要模块。它省去了注册前的信息盲区——你可以像翻看目录一样，先确认这里是否包含你关心的内容。当然，每个人的偏好不同，看一眼首页通常就能做判断。</p>
+            </div>
+            <div class="segment">
+                <h2><span class="meta-tag">场景</span> 日常浏览或初步了解</h2>
+                <p>无论是通过搜索还是朋友推荐，打开一个不熟悉的站点时，最核心的需求是“它到底是做什么的”。这个页面就是为此设计的：淡化复杂术语，强调内容分区。不需要先注册或登录，所有信息都在表面。如果你正在寻找竞彩相关的内容入口，可以把它当作一个起点。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要（点缀节奏） -->
+        <div class="faq-mini">
+            <div class="item"><strong>常见问题</strong> <span>页面内容是否实时更新？</span></div>
+            <div class="item"><strong>提示</strong> <span>建议以实际网站显示为准，本页仅作介绍。</span></div>
+            <div class="item"><strong>便捷</strong> <span>直接访问网站无需额外下载。</span></div>
+        </div>
+
+        <!-- 页尾访问提示 (自然嵌入链接) -->
+        <div class="footer-access">
+            <p>如果你觉得它符合你的需求，可以随时通过下方链接前往：</p>
+            <div class="link-sentence">
+                → 了解更多，请访问 <a href="https://zhmobile-sporttery.com">竞彩网</a> 查看完整内容。
+            </div>
+            <p style="font-size:0.85rem; color:#3f6777; margin-top:1rem;">杂志风格索引 · 仅作信息说明</p>
+        </div>
+    </div>
+</body>
+</html>
